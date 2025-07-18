@@ -89,7 +89,7 @@ function App() {
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="Enter city name (e.g., London, New York, Tokyo)"
+                placeholder="Enter city name (e.g., Pune, Chennai, New Delhi...)"
                 className="w-full text-lg h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                 disabled={loading}
               />
@@ -166,7 +166,7 @@ function App() {
                 d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.002 4.002 0 003 15z"
               />
             </svg>
-            <h3 className="text-xl font-semibold text-blue-800 mb-2">Welcome to Weather App</h3>
+            <h3 className="text-xl font-semibold text-blue-800 mb-2">Welcome to weather.dev</h3>
             <p className="text-blue-600">
               Enter a city name above to get started with real-time weather information. You'll see temperature,
               humidity, wind speed, and much more!
