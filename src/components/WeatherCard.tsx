@@ -52,7 +52,7 @@ function WeatherCard({ data }: props) {
                             </svg>
                             {data.name}, {data.sys.state}
                         </h2>
-                        <p className="text-white/90 capitalize mt-1">{data.weather[0].description}</p>
+                        <p className="text-white/90 capitalize mt-1">{data.weather[1].description}</p>
                     </div>
                     <div className="text-right">
                         <div className="text-4xl font-bold">{Math.round(data.main.temp)}°C</div>
