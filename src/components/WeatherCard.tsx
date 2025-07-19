@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
 import type { WeatherData } from "../types/weather";
 
 interface props {
     data: WeatherData;
 }
+
+const [currentTime, setCurrentTime] = useState<string>("");
+
 
 function WeatherCard({ data }: props) {
     const formatTime = (timestamp: number) => {
@@ -29,6 +33,27 @@ function WeatherCard({ data }: props) {
         }
     }
 
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            // store days
+            const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+            //store time in 12hrs format
+            const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+            setCurrentTime(`${day}, ${time}`);
+        };
+
+        // Initial call
+        updateTime();
+
+        // Update every 1hr
+        const interval = setInterval(updateTime, 3600000);
+        // Cleanup on unmount
+        return () => clearInterval(interval);
+
+    }, []);
+
     return (
         <div className="w-full max-w-2xl mx-auto mt-6 overflow-hidden bg-white rounded-lg shadow-lg border border-gray-200">
             {/* Header */}
@@ -53,6 +78,7 @@ function WeatherCard({ data }: props) {
                             {data.name}, {data.sys.state}
                         </h2>
                         <p className="text-white/90 capitalize mt-1">{data.weather[0].description}</p>
+                        <p className="text-white/90 capitalize mt-1">{currentTime}</p>
                     </div>
                     <div className="text-right">
                         <div className="text-4xl font-bold">{Math.round(data.main.temp)}°C</div>
