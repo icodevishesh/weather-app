@@ -80,7 +80,7 @@ function WeatherCard({ data }: props) {
                             {data.name}, {data.sys.state}
                         </h2>
                         <p className="text-white/90 capitalize mt-1">{data.weather[0].description}</p>
-                        <p className="text-white/90 capitalize mt-1">{data.timezone}</p>
+                        <p className="text-white/90 capitalize mt-1">{currentTime}</p>
                     </div>
                     <div className="text-right">
                         <div className="text-4xl font-bold">{Math.round(data.main.temp)}°C</div>
