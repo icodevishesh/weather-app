@@ -1,5 +1,6 @@
 export interface WeatherData {
-    name: string,
+    name: string;
+    timezone: number;
     sys: {
         state: string,
         sunrise: number,

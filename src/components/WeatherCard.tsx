@@ -35,10 +35,13 @@ function WeatherCard({ data }: props) {
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
+            const nowUTC = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+            const localTime = new Date(nowUTC.getTime() + data.timezone * 60000);
+
             // store days
-            const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+            const day = localTime.toLocaleDateString('en-US', { weekday: 'long' });
             //store time in 12hrs format
-            const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            const time = localTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
             setCurrentTime(`${day}, ${time}`);
         };
@@ -51,7 +54,7 @@ function WeatherCard({ data }: props) {
         // Cleanup on unmount
         return () => clearInterval(interval);
 
-    }, []);
+    }, [data.timezone]);
 
     return (
         <div className="w-full max-w-2xl mx-auto mt-6 overflow-hidden bg-white rounded-lg shadow-lg border border-gray-200">
@@ -77,7 +80,7 @@ function WeatherCard({ data }: props) {
                             {data.name}, {data.sys.state}
                         </h2>
                         <p className="text-white/90 capitalize mt-1">{data.weather[0].description}</p>
-                        <p className="text-white/90 capitalize mt-1">{currentTime}</p>
+                        <p className="text-white/90 capitalize mt-1">{data.timezone}</p>
                     </div>
                     <div className="text-right">
                         <div className="text-4xl font-bold">{Math.round(data.main.temp)}°C</div>
