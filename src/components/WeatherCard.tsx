@@ -5,8 +5,6 @@ interface props {
     data: WeatherData;
 }
 
-const [currentTime, setCurrentTime] = useState<string>("");
-
 
 function WeatherCard({ data }: props) {
     const formatTime = (timestamp: number) => {
@@ -15,6 +13,7 @@ function WeatherCard({ data }: props) {
             minute: "2-digit",
         })
     }
+    const [currentTime, setCurrentTime] = useState<string>("");
 
     const getWeatherGradient = (main: string) => {
         switch (main.toLowerCase()) {
