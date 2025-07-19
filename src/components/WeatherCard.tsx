@@ -47,7 +47,7 @@ function WeatherCard({ data }: props) {
         updateTime();
 
         // Update every 1hr
-        const interval = setInterval(updateTime, 3600000);
+        const interval = setInterval(updateTime, 60000);
         // Cleanup on unmount
         return () => clearInterval(interval);
 
