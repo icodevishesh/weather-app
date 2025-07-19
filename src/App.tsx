@@ -76,7 +76,7 @@ function App() {
                 d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.002 4.002 0 003 15z"
               />
             </svg>
-            <h1 className="text-4xl font-bold text-gray-800">Weather App</h1>
+            <h1 className="text-4xl font-bold text-gray-800">weather.dev</h1>
           </div>
           <p className="text-gray-600 text-lg">Get real-time weather information for any city worldwide</p>
         </div>
