@@ -36,7 +36,7 @@ function WeatherCard({ data }: props) {
         const updateTime = () => {
             const now = new Date();
             const nowUTC = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-            const localTime = new Date(nowUTC.getTime() + data.timezone * 60000);
+            const localTime = new Date(nowUTC.getTime() + data.timezone * 1000);
 
             // store days
             const day = localTime.toLocaleDateString('en-US', { weekday: 'long' });
